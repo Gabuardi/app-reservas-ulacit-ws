@@ -186,15 +186,41 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Error.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estadistica.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Habitacion.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hotel.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModeloReservas.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloReservas.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModeloReservas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModeloReservas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloReservas.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reserva.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sesion.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>ModeloReservas.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -210,6 +236,10 @@
     <Content Include="Models\ModeloReservas.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModeloReservas.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModeloReservas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloReservas.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
