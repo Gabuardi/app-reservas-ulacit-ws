@@ -25,12 +25,13 @@ namespace WebApiSegura.Models
     
         public int USU_CODIGO { get; set; }
         public string USU_IDENTIFICACION { get; set; }
-        public string USO_NOMBRE { get; set; }
+        public string USU_NOMBRE { get; set; }
         public string USU_PASSWORD { get; set; }
         public string USU_EMAIL { get; set; }
         public string USU_ESTADO { get; set; }
         public System.DateTime USU_FEC_NAC { get; set; }
         public string USU_TELEFONO { get; set; }
+        public string Token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Error> Error { get; set; }

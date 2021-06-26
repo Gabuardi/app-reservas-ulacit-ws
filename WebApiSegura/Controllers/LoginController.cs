@@ -29,7 +29,7 @@ namespace WebApiSegura.Controllers
                 {
                     SqlCommand sqlCommand = new SqlCommand(
                         @"SELECT * FROM Usuario
-                    WHERE USU_IDENTIFICATION = @USU_IDENTIFICATION
+                    WHERE USU_IDENTIFICACION = @USU_IDENTIFICACION
                     AND USU_PASSWORD = @USU_PASSWORD", sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@USU_IDENTIFICAION", loginRequest.Username);
                     sqlCommand.Parameters.AddWithValue("@USU_PASSWORD", loginRequest.Password);
@@ -61,6 +61,45 @@ namespace WebApiSegura.Controllers
             {
                 return InternalServerError(ex);
             }
+        }
+
+
+        [HttpPost]
+        [Route("register")]
+        public IHttpActionResult Register(Usuario usuario)
+        {
+            if (usuario == null)
+                return BadRequest();
+
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString);
+                using (sqlConnection)
+                {
+                    SqlCommand sqlCommand = new SqlCommand(
+                        @"INSERT INTO Usuario (USU_IDENTIFICACION, USU_NOMBRE, USU_PASSWORD, USU_EMAIL, USU_ESTADO, USU_FEC_NAC, USU_TELEFONO)
+                        VALUES (@USU_IDENTIFICACION, @USU_NOMBRE, @USU_PASSWORD, @USU_EMAIL, @USU_ESTADO, @USU_FEC_NAC, @USU_TELEFONO)", sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@USU_IDENTIFICACION", usuario.USU_IDENTIFICACION);
+                    sqlCommand.Parameters.AddWithValue("@USU_NOMBRE", usuario.USU_NOMBRE);
+                    sqlCommand.Parameters.AddWithValue("@USU_PASSWORD", usuario.USU_PASSWORD);
+                    sqlCommand.Parameters.AddWithValue("@USU_EMAIL", usuario.USU_EMAIL);
+                    sqlCommand.Parameters.AddWithValue("@USU_ESTADO", usuario.USU_ESTADO);
+                    sqlCommand.Parameters.AddWithValue("@USU_FEC_NAC", usuario.USU_FEC_NAC);
+                    sqlCommand.Parameters.AddWithValue("@USU_TELEFONO", usuario.USU_TELEFONO);
+
+                    sqlConnection.Open();
+                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
+                    if (filasAfectadas > 1)
+                        return Ok(usuario);
+                    sqlConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(usuario);
         }
     }
 }
