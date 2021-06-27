@@ -129,10 +129,10 @@ namespace WebApiSegura.Controllers
                 SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RESERVAS"].ConnectionString);
                 using (sqlConnection)
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"UPDATE HOTEL 
+                    SqlCommand sqlCommand = new SqlCommand(@"UPDATE hotel 
                                                            SET HOT_NOMBRE = @HOT_NOMBRE,
-                                                           SET HOT_EMAIL = HOT_EMAIL,
-                                                           SET HOT_DIRECCION = HOT_DIRECCION,
+                                                           HOT_EMAIL = HOT_EMAIL,
+                                                           HOT_DIRECCION = HOT_DIRECCION,
                                                            HOT_TELEFONO = @HOT_TELEFONO,
                                                            HOT_CATEGORIA = @HOT_CATEGORIA
                                                            WHERE HOT_CODIGO = @HOT_CODIGO", sqlConnection);
@@ -145,7 +145,6 @@ namespace WebApiSegura.Controllers
 
                     sqlConnection.Open();
                     int filasAfectadas = sqlCommand.ExecuteNonQuery();
-
                     sqlConnection.Close();
                 }
             }
