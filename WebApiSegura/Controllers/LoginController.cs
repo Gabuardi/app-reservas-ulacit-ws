@@ -29,9 +29,9 @@ namespace WebApiSegura.Controllers
                 {
                     SqlCommand sqlCommand = new SqlCommand(
                         @"SELECT * FROM Usuario
-                    WHERE USU_IDENTIFICACION = @USU_IDENTIFICACION
-                    AND USU_PASSWORD = @USU_PASSWORD", sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@USU_IDENTIFICAION", loginRequest.Username);
+                        WHERE USU_IDENTIFICACION = @USU_IDENTIFICACION
+                        AND USU_PASSWORD = @USU_PASSWORD", sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@USU_IDENTIFICACION", loginRequest.Username);
                     sqlCommand.Parameters.AddWithValue("@USU_PASSWORD", loginRequest.Password);
 
                     sqlConnection.Open();
